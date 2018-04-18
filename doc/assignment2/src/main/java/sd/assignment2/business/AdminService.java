@@ -1,15 +1,17 @@
 package sd.assignment2.business;
 
 
-import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sd.assignment2.data.entity.Admin;
 import sd.assignment2.data.entity.Course;
-import sd.assignment2.data.entity.Enrollment;
 import sd.assignment2.data.repository.AdminRepository;
+import sd.assignment2.data.repository.CourseRepository;
 import sd.assignment2.data.repository.StudentRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -26,6 +28,9 @@ public class AdminService {
     @Autowired
     private EnrollmentService enrollmentService;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
 
     /*public void generateReport(String nameStudent)
     {}*/
@@ -36,7 +41,23 @@ public class AdminService {
     public void setGrade(String studentName,String courseName,int grade)
     { enrollmentService.setGrade(studentName,courseName,grade);}
 
-    public List<Course> viewEnrollments(String nameStudent)
-    { return studentService.viewCourses(nameStudent);}
+    public List<Course> getCourses()
+    {
+        return courseRepository.findAll();
+    }
+    public Optional<Admin> getAdmin()
+    {
+        return adminRepository.findById(1);
+    }
+    public void addCourse(Course course)
+    {
+        courseRepository.save(course);
+    }
+    public int getIDCourse()
+    {
+       List<Course> c= new ArrayList<Course>();
+       c=courseRepository.findAll();
+       return c.size()+1;
 
+    }
 }

@@ -67,10 +67,10 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" +
+        return "Admin " +
                 "adminId=" + adminId +
-                ", adminName='" + adminName + '\'' +
-                ", courses=" + courses +
-                '}';
+                ", adminName='" + adminName +
+                ", courses=" + courses
+                ;
     }
 }

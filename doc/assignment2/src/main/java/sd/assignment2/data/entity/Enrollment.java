@@ -85,11 +85,11 @@ public class Enrollment {
 
     @Override
     public String toString() {
-        return "Enrollment{" +
+        return "Enrollment " +
                 "enrollmentId=" + enrollmentId +
-                ", students=" + student +
+                //", students=" + student +
                 ", courses=" + course +
-                ", grade=" + grade +
-                '}';
+                ", grade=" + grade
+                ;
     }
 }

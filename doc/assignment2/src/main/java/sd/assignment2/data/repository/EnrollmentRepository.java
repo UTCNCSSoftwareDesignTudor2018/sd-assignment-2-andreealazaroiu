@@ -8,6 +8,8 @@ import sd.assignment2.data.entity.Course;
 import sd.assignment2.data.entity.Enrollment;
 import sd.assignment2.data.entity.Student;
 
+import java.util.List;
+
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment,Integer> {
 
@@ -16,4 +18,8 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment,Integer> 
 
     @Query("SELECT e FROM Enrollment e where e.student=:s and e.course=:c")
     public Enrollment getEnrollment(@Param("s")Student student, @Param("c")Course course);
+    @Query("SELECT e FROM Enrollment e where e.student=:s")
+    public List<Enrollment> getEnrollments(@Param("s")Student student);
+
+
 }

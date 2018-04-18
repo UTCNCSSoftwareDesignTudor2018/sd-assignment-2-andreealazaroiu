@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 @Table(name="courses")
@@ -19,7 +20,7 @@ public class Course
     @Column(name="course_name")
     private String courseName;
 
-    @Column(name="date_exam")
+    @Column(name="date_exam",columnDefinition = "DATE")
     private LocalDate dateExam;
 
     @ManyToOne(targetEntity = Admin.class)
@@ -38,8 +39,10 @@ public class Course
         this.students=new ArrayList<Student>();
     }
 
-    public Course() {
+    public Course( String courseName, LocalDate dateExam,Admin admin) {
     }
+    public Course(){}
+
 
     public int getCourseId() {
         return courseId;
@@ -98,13 +101,13 @@ public class Course
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "Course " +
                 "courseId=" + courseId +
-                ", courseName='" + courseName + '\'' +
+                " ,courseName='" + courseName +
                 ", dateExam=" + dateExam +
                 ", grade="  +
-                ", admin=" + admin +
-                '}';
+                ", admin=" + admin
+                ;
     }
 
     @Converter(autoApply = true)
@@ -120,4 +123,5 @@ public class Course
             return (sqlDate == null ? null : sqlDate.toLocalDate());
         }
     }
+
 }

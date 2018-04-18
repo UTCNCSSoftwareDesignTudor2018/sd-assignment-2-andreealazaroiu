@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrator Page</title>
+</head>
+<body>
+    <p>
+        The Students are:
+        <ul th:each="student : ${students}">
+            <li th:text="${student.studentName}"></li>
+
+    </ul>
+
+        Please enter the name of the student for further information!
+    <form method="post" action="AdminPage">
+        <input type="text" name="putStudentName">
+        <input type="submit" name="gradeStudent" value="Grade Student">
+        <input type="submit" name="viewStudent" value="View Student">
+        <input type="submit" name="generateReport" value="Generate Student Report">
+        <input type="text" name="courseName" value="Enter Course you want to grade">
+        <input type="text" name="enterGrade" value="Enter Grade for Student">
+            <p th:text="${viewStudent}"/>
+
+        <table  border="1">
+            <thead>
+            <tr>
+                <th>course name</th>
+                <th>grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="enrol : ${ enrollments }">
+                <td th:text="${ enrol.course.courseName }">name</td>
+                <td th:text="${ enrol.grade}">grade</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </form>
+    </p>
+
+
+<p>
+    The Courses are:
+    <ul th:each="course : ${courses}">
+        <li th:text="${course.courseName}"></li>
+    </ul>
+    <form method="post" action="AdminPage">
+        Enter Course name:
+        <input type="text" name="enterCourseName">
+        Enter Date Exam:
+        <input type="text" name="dateExam">
+        <input type="submit" name="addCourse" value="Add Course">
+    </form>
+</p>
+
+
+
+</body>
+</html>

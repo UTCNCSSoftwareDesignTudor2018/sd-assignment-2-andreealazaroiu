@@ -98,14 +98,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Student " +
                 "studentId=" + studentId +
-                ", studentName='" + studentName + '\'' +
+                ", studentName='" + studentName +
                 ", pnc=" + pnc +
                 ", cardNumber=" + cardNumber +
                 ", group=" + group +
-                ", email='" + email + '\'' +
-                '}';
+                ", email=" + email ;
+
     }
 
     public static class StudentBuilder

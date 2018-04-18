@@ -84,49 +84,19 @@ public class Assignment2ApplicationTests {
 	@Test
 	public void verifyStudentUpdate()
 	{
-		//Optional<Student> s=studentRepository.findById(1);
-
-		//String stud=s.get().getStudentName();
 		studentService.updateEmail("Emanuel Cinca","emacinca@yahoo.com");
-
-		//Optional<Student> s2=studentRepository.findById(1);
-		//System.out.println(s2.get().getEmail());
-
 	}
 
-	@SuppressWarnings("deprecation")
+	/*@SuppressWarnings("deprecation")
 	@Test
 	public void verifyEnrollmentDelete()
 	{
-		enrollmentService.deleteEnrollment("Luta Marin","Software Design");
-	}
+		enrollmentService.deleteEnrollment("Luta Marin","Software Design");}*/
+
 
 	@SuppressWarnings("deprecation")
 	@Test
 	public void verifyEnrollmentGetGrade()
-	{
-		System.out.println(enrollmentService.getGrade("Emanuel Cinca","Software Design"));
-	}
+	{ System.out.println(enrollmentService.getGrade("Emanuel Cinca","Software Design")); }
 
-	/*Worked
-	@SuppressWarnings("deprecation")
-	@Test
-	public void verifySetGrade()
-	{enrollmentService.setGrade("Emanuel Cinca","Software Design",9);}*/
-
-	/*worked
-	@SuppressWarnings("deprecation")
-	@Test
-	public void verifyDeleteStudent()
-	{studentService.deletePersonalInformation("Luta Marin");}*/
-
-
-	/*@SuppressWarnings("deprecation")
-	@Test
-	public void verifyGetAllCourses()
-	{
-		List<Course> c=studentService.viewCourses("Emanuel Cinca");
-		for(Course a:c)
-		System.out.println(a.getCourseName()+" ");
-	}*/
 }

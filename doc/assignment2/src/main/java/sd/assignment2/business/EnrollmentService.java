@@ -4,9 +4,12 @@ package sd.assignment2.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sd.assignment2.data.entity.Enrollment;
+import sd.assignment2.data.entity.Student;
 import sd.assignment2.data.repository.CourseRepository;
 import sd.assignment2.data.repository.EnrollmentRepository;
 import sd.assignment2.data.repository.StudentRepository;
+
+import java.util.List;
 
 @Service
 public class EnrollmentService {
@@ -29,10 +32,15 @@ public class EnrollmentService {
         e.setGrade(grade);
         enrollmentRepository.save(e);
     }
+    public List<Enrollment> getEnrollments(Student s)
+    {
+        return enrollmentRepository.getEnrollments(s);
+    }
 
     public void createEnrollment(String nameStudent,String nameCourse)
     { enrollmentRepository.save(new Enrollment(studentRepository.getByStudentName(nameStudent),courseRepository.getByCourseName(nameCourse),0)); }
 
     public void deleteEnrollment(String nameStudent,String nameCourse)
-    { enrollmentRepository.delete(enrollmentRepository.getEnrollment(studentRepository.getByStudentName(nameStudent),courseRepository.getByCourseName(nameCourse)));}
+    {   Enrollment e=enrollmentRepository.getEnrollment(studentRepository.getByStudentName(nameStudent),courseRepository.getByCourseName(nameCourse));
+        enrollmentRepository.delete(e);}
 }
